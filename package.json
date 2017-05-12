@@ -16,6 +16,7 @@
     "axios": "^0.16.0",
     "moment": "^2.18.1",
     "nprogress": "^0.2.0",
+    "vee-validate": "^2.0.0-rc.3",
     "vue": "^2.2.2",
     "vue-infinite-scroll": "^2.0.1",
     "vue-router": "^2.2.0",
