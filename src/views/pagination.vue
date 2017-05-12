@@ -32,7 +32,9 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import {
+    cnode
+  } from '../libs/ajax'
   import loading from '../components/loading'
   import pagination from '../components/pagination'
   export default {
@@ -63,16 +65,15 @@
     },
     methods: {
       pageChanged(val) {
-        this.$store.dispatch('setPage', val)
         this.cur = val
         this.loadData()
       },
       loadData(cb) {
-        axios.get('topics', {
+        cnode.get('topics', {
           params: this.params
         }).then((res) => {
           this.posts = res.data.data
-          if (typeof (cb) === 'function') {
+          if (typeof cb === 'function') {
             cb(res.data)
           }
           this.busy = false
@@ -85,15 +86,13 @@
         })
       }
     },
-    watch: {
-      '$route'(to, from) {
-        console.log(to.name)
-        if (to.name === 'postDetail') {
-          this.$store.dispatch('setPage', this.cur)
-        } else {
-          this.$store.dispatch('setPage', 1)
-        }
+    beforeRouteLeave(to, from, next) {
+      if (to.name === 'postDetail') {
+        this.$store.dispatch('setPage', this.cur)
+      } else {
+        this.$store.dispatch('setPage', 1)
       }
+      next()
     },
     components: {
       loading,
