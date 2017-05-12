@@ -26,7 +26,7 @@
         <router-link to="/debounce">debounce</router-link>
       </li>
       <li class="list-group-item">
-        <router-link to="/debounce">validation</router-link>
+        <router-link to="/crud/create">validation</router-link>
       </li>
       <li class="list-group-item">
         <router-link to="/crud">crud</router-link>
