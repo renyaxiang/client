@@ -14,7 +14,9 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import {
+    cnode
+  } from '../libs/ajax'
   import loading from '../components/loading.vue'
   export default {
     data() {
@@ -30,7 +32,7 @@
     methods: {
       loadMore() {
         this.busy = true
-        axios.get('topics', {
+        cnode.get('topics', {
           params: this.params
         }).then((res) => {
           this.posts = this.posts.concat(res.data.data)
