@@ -17,11 +17,10 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import {
+    site
+  } from '../libs/ajax.js'
   import alert from '../components/alert'
-  var instance = axios.create({
-    baseURL: 'http://127.0.0.1:3000/api/'
-  })
   export default {
     data() {
       return {
@@ -36,7 +35,7 @@
           username: this.username,
           password: this.password
         }
-        instance.post('users/login', userObj).then((res) => {
+        site.post('users/login', userObj).then((res) => {
           localStorage.setItem('token', res.data.token)
           this.$store.dispatch('setToken', res.data.token)
           let path = this.$route.query.redirect || '/'
