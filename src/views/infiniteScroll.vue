@@ -3,7 +3,7 @@
     <div class="page-header">
       <h1 class="text-center">列表滚动加载</h1>
     </div>
-    <ul class="list-unstyled" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+    <ul class="container list-unstyled" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
       <li v-for="item in posts">
         <router-link :to="{name: 'postDetail', params: {postId: item.id}}">{{item.title}}
         </router-link>

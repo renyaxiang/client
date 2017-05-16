@@ -3,21 +3,26 @@
     <div class="page-header">
       <h1 class="text-center">输入防抖动</h1>
     </div>
-    <input type="search" class="form-control" v-model="searchQuery">
-    <div class="alert">{{searchIndicator}}</div>
-    <table class="table">
-      <thead>
-        <tr>
-          <td>内容</td>
-          <td>时间</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in datas">
-          <td>{{item.text}}</td><td> {{item.time | time('YY-MM-DD hh:mm:ss')}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="container">
+      <form>
+        <input type="search" class="form-control" v-model="searchQuery">
+      </form>
+      <p class="text-muted">{{searchIndicator}}</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>内容</td>
+            <td>时间</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in datas">
+            <td>{{item.text}}</td>
+            <td> {{item.time | time('YY-MM-DD hh:mm:ss')}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <loading :show="isCalculating"></loading>
   </div>
 </template>
@@ -35,7 +40,7 @@
       }
     },
     computed: {
-      searchIndicator: function () {
+      searchIndicator() {
         if (this.isCalculating) {
           return 'Fetching new results'
         } else if (this.searchQueryIsDirty) {
@@ -46,7 +51,7 @@
       }
     },
     watch: {
-      searchQuery: function () {
+      searchQuery() {
         this.searchQueryIsDirty = true
         this.search()
       }

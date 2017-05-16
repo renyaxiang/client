@@ -1,9 +1,9 @@
 <template>
   <div>
+    <alert v-if="alert" :msg="alert"></alert>  
     <router-link :to="{name: 'crudCreate'}">
       <button class="btn btn-default">新增</button>
     </router-link>
-    <alert v-if="alert" :msg="alert"></alert>
     <table class="table">
       <thead>
         <tr>
@@ -16,14 +16,14 @@
       <tbody>
         <tr v-for="item in users">
           <td>{{item.username}}</td>
-          <td>{{item.create_time | time}}</td>
+          <td>{{item.create_date | time}}</td>
           <td>{{item.role}}</td>
           <td>
-            <router-link :to="{name: 'crudDetail', params: {id: item._id}}">
+            <router-link :to="{name: 'crudDetail', params: {userId: item._id}}">
               <button class="btn btn-default btn-sm">查看</button>
             </router-link>
-            <router-link :to="{name: 'crudUpdate', params: {id: item._id}}"><button class="btn btn-default btn-sm">编辑</button></router-link>
-            <button class="btn btn-default btn-sm btn-danger" @click="del(item._id, item.name)">删除</button>
+            <router-link :to="{name: 'crudUpdate', params: {userId: item._id}}"><button class="btn btn-default btn-sm">编辑</button></router-link>
+            <button class="btn btn-default btn-sm btn-danger" @click="del(item._id, item.username)">删除</button>
           </td>
         </tr>
       </tbody>
@@ -32,11 +32,10 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import {
+    site
+  } from '../../libs/ajax'
   import alert from '../../components/alert'
-  var instance = axios.create({
-    baseURL: 'http://127.0.0.1:3000/api/'
-  })
   export default {
     data() {
       return {
@@ -49,7 +48,7 @@
     },
     methods: {
       init() {
-        instance.get('users').then((res) => {
+        site.get('users').then((res) => {
           res.data.map((item) => {
             switch (item.role) {
               case 'user':
@@ -67,7 +66,7 @@
         })
       },
       del(id, username) {
-        instance.delete('users/' + id).then((res) => {
+        site.delete('users/' + id).then((res) => {
           this.alert = '您删除了用户：' + username
           this.init()
         })

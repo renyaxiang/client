@@ -69,3 +69,14 @@ copy-webpack-plugin
 2017-05-09
 
 实现表格的状态管理。利用组件内的导航钩子：beforeRouteLeaver实例，结合vuex注入组件中的this.$store.dispatch('setPage', this.cur)赋值。
+
+2017-05-15
+
+增加了bootstrap的响应式导航
+
+使用keep-alive组件用来缓存组件,避免多次加载相应的组件,减少性能消耗
+
+2017-05-16
+
+利用插件，添加 Vue 实例方法，通过把它们添加到 Vue.prototype 上。实现了一个全局的错误提示的实例
+

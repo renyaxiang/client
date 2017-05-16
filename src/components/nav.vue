@@ -1,39 +1,29 @@
 <template>
-  <nav>
-    <div class="page-header">
-      <h1 class="text-center">template</h1>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+        <a class="navbar-brand" href="#">Vue.js</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">首页</a></li>
+          <li><a href="/component">组件</a></li>
+          <li><a href="/case">案例</a></li>
+          <li><a href="/about">关于</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/login">登录</a></li>
+          <li><a href="/logout">退出</a></li>
+        </ul>
+      </div>
     </div>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <router-link to="/signup">signup</router-link>
-      </li>
-      <li class="list-group-item">
-        <router-link to="/login">login</router-link>
-      </li>
-      <li class="list-group-item">
-        <router-link to="/" @click.native="logout" >logout</router-link>
-      </li>
-       <li class="list-group-item">
-        <router-link to="/authorization">authorization</router-link>
-      </li>
-      <li class="list-group-item">
-        <router-link to="/infiniteScroll">infinite-scroll</router-link>
-      </li>
-      <li class="list-group-item">
-        <router-link to="/pagination">pagination</router-link>
-      </li>
-      <li class="list-group-item">
-        <router-link to="/debounce">debounce</router-link>
-      </li>
-      <li class="list-group-item">
-        <router-link to="/crud/create">validation</router-link>
-      </li>
-      <li class="list-group-item">
-        <router-link to="/crud">crud</router-link>
-      </li>
-    </ul>
   </nav>
-
 </template>
 
 <script>

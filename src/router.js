@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import signup from './views/signup'
 import login from './views/login'
+import component from './views/component'
 import authorization from './views/authorization'
 import infiniteScroll from './views/infiniteScroll'
 import pagination from './views/pagination'
@@ -14,10 +15,12 @@ import Index from './views/index'
 import postIndex from './views/post/index'
 import postAdd from './views/post/add'
 import postDetail from './views/post/detail'
+import scrollBehavior from './scrollBehavior'
 
 Vue.use(Router)
 const router = new Router({
   mode: 'history',
+  scrollBehavior,
   routes: [
     {
       path: '/signup',
@@ -41,6 +44,11 @@ const router = new Router({
       path: '/',
       name: 'Index',
       component: Index
+    },
+    {
+      path: '/component',
+      name: 'component',
+      component: component
     },
     {
       path: '/infiniteScroll',
@@ -73,12 +81,12 @@ const router = new Router({
           component: crudForm
         },
         {
-          path: ':id/update',
+          path: ':userId/update',
           name: 'crudUpdate',
           component: crudForm
         },
         {
-          path: ':id/detail',
+          path: ':userId/detail',
           name: 'crudDetail',
           component: crudDetail
         }

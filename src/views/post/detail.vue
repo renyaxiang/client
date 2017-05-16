@@ -1,11 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <loading :show="loading"></loading>
     <div v-if="!loading">
-      <h1>标题</h1>
-      <div v-text="post.title"></div>
-      <h1>正文</h1>
-      <div v-html="post.content"></div>
+      <h1 v-text="post.title"></h1>
+      <div v-html="post.content" class="post-content"></div>
       <h1>评论</h1>
       <ul>
         <li v-for="item in post.replies">
@@ -20,7 +18,9 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import {
+    cnode
+  } from '../../libs/ajax'
   import loading from '../../components/loading.vue'
   // import moment from 'moment'
   export default {
@@ -32,7 +32,7 @@
     },
     mounted() {
       let postId = this.$route.params.postId
-      axios.get('topic/' + postId).then((res) => {
+      cnode.get('topic/' + postId).then((res) => {
         this.post = res.data.data
         this.loading = false
       })
@@ -43,9 +43,9 @@
   }
 </script>
 
-<<style lang="scss" scoped>
-  img{
-    max-width: 100%;
+<style lang="scss">
+  .post-content img{
+    max-width: 100%
   }
 </style>
 

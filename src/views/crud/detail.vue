@@ -18,21 +18,20 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  var instance = axios.create({
-    baseURL: 'http://127.0.0.1:3000/api/'
-  })
+  import {
+    site
+  } from '../../libs/ajax'
   export default {
     data() {
       return {
-        user: null
+        user: {}
       }
     },
     mounted() {
-      let id = this.$route.params.id
-      instance.get('users/' + id).then((res) => {
+      let userId = this.$route.params.userId
+      site.get('users/' + userId).then((res) => {
         let _user = res.data
-        _user.gender = _user.gender === 0 ? '男' : '女'
+        _user.gender = _user.gender === 1 ? '男' : '女'
         _user.role = _user.role === 'user' ? '普通用户' : '管理员'
         this.user = _user
       })
@@ -40,6 +39,3 @@
   }
 </script>
 
-<style lang="scss">
-  
-</style>

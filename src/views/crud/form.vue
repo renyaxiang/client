@@ -34,7 +34,7 @@
         <input type="radio" v-model.number="user.gender" value="2"> 女
       </label>
     </div>
-    <button type="submit" class="btn btn-default" :disabled="disabled">保存</button>
+    <button type="submit" class="btn btn-primary btn-block" :disabled="disabled">保存</button>
   </form>
 </template>
 
