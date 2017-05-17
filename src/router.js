@@ -15,12 +15,9 @@ import Index from './views/index'
 import postIndex from './views/post/index'
 import postAdd from './views/post/add'
 import postDetail from './views/post/detail'
-import scrollBehavior from './scrollBehavior'
 
 Vue.use(Router)
 const router = new Router({
-  mode: 'history',
-  scrollBehavior,
   routes: [
     {
       path: '/signup',
